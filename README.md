@@ -8,7 +8,5 @@ UNTreF - Algoritmos y Programación 1
 
 Completar implementación de la clase `Curso`:
 
-	* [`Curso`](../enunciado/src/Curso.java)
-	
-	
-    
+ * [`Curso`](../enunciado/src/Curso.java)
+
