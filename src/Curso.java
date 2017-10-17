@@ -1,4 +1,5 @@
 
+
 public class Curso {
 
     private int[] notas;
@@ -31,7 +32,7 @@ public class Curso {
      */
     public int contarAlumnos() {
      
-        return 0;
+        return notas.length;
     }
 
 
@@ -42,6 +43,10 @@ public class Curso {
      */
     public void calificarAlumno(int numeroDeAlumno, int notaDelAlumno) {
         
+        validarNumero(numeroDeAlumno);
+        validarNota(notaDelAlumno);
+        
+        notas[numeroDeAlumno - 1] = notaDelAlumno;
     }
     
     /**
@@ -50,7 +55,9 @@ public class Curso {
      */
     public int obtenerNotaDelAlumno(int numeroDeAlumno) {
         
-        return 0;
+        validarNumero(numeroDeAlumno);
+        
+        return notas[numeroDeAlumno - 1];
     }
 
     /**
@@ -60,7 +67,26 @@ public class Curso {
      */
     public double calcularNotaPromedio() {
         
-        return 0;
+        double sumaDeNotas = 0;
+        int alumnosCalificados = 0;
+        
+        for (int i = 0; i < notas.length; i++) {
+            
+            if (notas[i] > 0) {
+                
+                sumaDeNotas = sumaDeNotas + notas[i];
+                alumnosCalificados++;
+            }
+        }
+        
+        double promedio = 0;
+        
+        if (alumnosCalificados > 0) {
+            
+            promedio = sumaDeNotas / alumnosCalificados;
+        }
+        
+        return promedio;
     }
     
     /**
@@ -69,7 +95,17 @@ public class Curso {
      */
     public int buscarNotaMaxima() {
         
-        return 0;
+        int notaMaxima = 0;
+        
+        for (int i = 0; i < notas.length; i++) {
+            
+            if (notas[i] > notaMaxima) {
+                
+                notaMaxima = notas[i];
+            }
+        }
+        
+        return notaMaxima;
     }
     
     /**
@@ -78,7 +114,17 @@ public class Curso {
      */
     public int buscarNotaMinima() {
         
-        return 0;
+        int notaMinima = 0;
+        
+        for (int i = 0; i < notas.length; i++) {
+            
+            if ((notaMinima == 0) || ((notas[i] > 0) && (notas[i] < notaMinima))) {
+                
+                notaMinima = notas[i];
+            }
+        }
+        
+        return notaMinima;
     }
     
     /**
@@ -86,6 +132,44 @@ public class Curso {
      */
     public int contarAlumnosConNota(int nota) {
         
-        return 0;
+        int alumnosConNota = 0;
+        
+        for (int i = 0; i < notas.length; i++) {
+            
+            if (notas[i] == nota) {
+
+                alumnosConNota++;
+            }
+        }
+        
+        return alumnosConNota;
     }
+
+    /**
+     * post: lanza una excepción si 'numeroDeAlumno' no está en el rango 
+     *       [1..contarAlumnos()]
+     */
+    private void validarNumero(int numeroDeAlumno) {
+ 
+        if ((numeroDeAlumno < 1) || (numeroDeAlumno > contarAlumnos())) {
+            
+            Error numeroDeAlumnoInvalido = new Error("Número de alumno inválido");
+            throw numeroDeAlumnoInvalido;
+        }
+    }
+    
+    /**
+     * post: lanza una excepción si 'notaDelAlumno' no está en el rango 
+     *       [1..10]
+     */
+    private void validarNota(int notaDelAlumno) {
+
+        if ((notaDelAlumno < 1) || (notaDelAlumno > 10)) {
+            
+            Error notaInvalida = new Error("Nota del alumno invalida");
+            throw notaInvalida;
+        }
+    }
+
+
 }

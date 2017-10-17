@@ -41,3 +41,10 @@ La implementación debe cumplir con el siguiente comportamiento
 
 ```
 
+## Resolución
+
+ * [`Curso`](../main/src/Curso.java)
+
+ * [`PruebaCurso`](../main/src/PruebaCurso.java)
+
+
