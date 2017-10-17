@@ -43,8 +43,8 @@ La implementación debe cumplir con el siguiente comportamiento
 
 ## Resolución
 
- * [`Curso`](../main/src/Curso.java)
+ * [`Curso`](../master/src/Curso.java)
 
- * [`PruebaCurso`](../main/src/PruebaCurso.java)
+ * [`PruebaCurso`](../master/src/PruebaCurso.java)
 
 
